@@ -18,23 +18,18 @@
 
 ## 📌 Overview
 
-Offline auditor for self-hosted Git server configuration (Gitea/Forgejo, GitLab, gitolite, git-daemon, cgit)
+OGitSrv — Self-Hosted Git Server Auditor. It provides offline, read-only audit of Git SERVER configuration (never touches repositories — see OGitSec for that). Built-in demo/self-test paths and severity gates help validate detections without touching production when those flags are used.
 
 ---
 
 ## ✨ Features
 
 - Offline, read-only audit of Git SERVER configuration (never touches repositories — see OGitSec for that)
-- Gitea / Forgejo app.ini analyzer — INSTALL_LOCK, SECRET_KEY / INTERNAL_TOKEN strength (masked), open registration, 2FA enforcement, webhook SSRF allow- lists, migrations to local networks, pprof / debug, session cookies, CORS, LFS / packages exposure, SSH
+- Gitea / Forgejo app.ini analyzer — INSTALL_LOCK, SECRET_KEY / INTERNAL_TOKEN strength (masked), open registration, 2FA enforcement, webhook SSRF allow- lists, migrations to local networks, pprof / debug, session cookies
 - GitLab Omnibus gitlab.rb analyzer — external_url TLS, signup, initial root password, Rack::Attack, local requests from webhooks, monitoring allow-lists, PostgreSQL / Redis binds, LDAP, OmniAuth, nginx TLS
 - gitolite.conf + .gitolite.rc — @all write access, GIT_CONFIG_KEYS, UMASK, risky features
 - git-daemon (systemd / xinetd / defaults) — export-all, receive-pack, base-path, root execution
 - cgitrc — filters, scan-path, git-config, clone URLs
-- File permission / ownership checks on the configs
-- 129 rules with severity, CWE, MITRE ATT&CK, remediation
-- Score 0-100 + grade A+…F, hardened templates
-- TXT / MD / JSON / CSV / SARIF exports, --fail-on CI gate
-- --demo self-test, --list-rules, --explain RULE
 
 ---
 
@@ -48,7 +43,10 @@ Offline auditor for self-hosted Git server configuration (Gitea/Forgejo, GitLab,
 ## 🚀 Usage
 
 ```bash
-./OGitSrv
+./OGitSrv <paths>
+./OGitSrv <paths> --type
+./OGitSrv <paths> --discover
+./OGitSrv --help
 ```
 
 ---
